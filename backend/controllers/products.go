@@ -44,6 +44,9 @@ func GetAllProducts(c *gin.Context) {
 	pageNumberStr := c.Query("page")
 	searchText := c.Query("search")
 
+	replacedText := strings.ReplaceAll(searchText, "%", " ")
+	fmt.Println(replacedText)
+
 	pageNumber, err := strconv.Atoi(pageNumberStr)
 	if err != nil || pageNumber < 1 {
 		pageNumber = 1
@@ -62,14 +65,12 @@ func GetAllProducts(c *gin.Context) {
 	var filteredData []Product
 
 	for i := 0; i < len(products.Products); i++ {
-		if strings.Contains(strings.ToLower(searchText), strings.ToLower(products.Products[i].Name)) {
+		if strings.Contains(strings.ToLower(products.Products[i].Name), strings.ToLower(replacedText)) {
 			filteredData = append(filteredData, products.Products[i])
 		}
 	}
 
-	fmt.Println(filteredData)
-
-	if len(filteredData) == 0 {
+	if len(filteredData) < 10 {
 		c.JSON(http.StatusOK, gin.H{
 			"success":    true,
 			"totalPages": len(filteredData) / 10,
