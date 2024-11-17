@@ -2,9 +2,8 @@ import axios from "axios";
 import { Session, SessionStrategy } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
-import GoogleProvider from "next-auth/providers/google";
-import { BACEND_URL } from "./config";
 import { cookies } from "next/headers";
+import { BACEND_URL } from "./config";
 
 interface user {
   id: string;
@@ -62,8 +61,6 @@ export const authOptions = {
 
   callbacks: {
     session: async ({ session, token }: any) => {
-      console.log(token);
-      console.log(session);
       const newSession: session = session as session;
       if (newSession.user && token.uid) {
         newSession.user.id = token.uid as string;
@@ -79,7 +76,6 @@ export const authOptions = {
         newToken.jwtToken = (user as user).token;
       }
 
-      console.log(newToken);
       return newToken;
     },
   },

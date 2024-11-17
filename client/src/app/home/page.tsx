@@ -1,13 +1,27 @@
 import { ProductList } from "@/components/Product";
 import { BACEND_URL } from "@/lib/config";
-import axios from "axios";
+import { cookies } from "next/headers";
 
 export async function getProducts() {
+  "use server";
   try {
-    const response = await axios.get(`${BACEND_URL}/products`, {
-      withCredentials: true,
+    const cookieStore = await cookies();
+    const token = cookieStore.get("token"); // Replace 'token' with your cookie name
+
+    // Prepare headers for the fetch request
+    const headers = {
+      "Content-Type": "application/json",
+      ...(token ? { Cookie: `token=${token.value}` } : {}),
+    };
+    const response = await fetch(`${BACEND_URL}/products`, {
+      method: "GET",
+      headers,
+      credentials: "include",
     });
-    return response.data.data.products || [];
+
+    const data = await response.json();
+
+    return data.data.products || [];
   } catch (err) {
     return [];
   }
