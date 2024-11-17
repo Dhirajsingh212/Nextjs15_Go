@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -45,7 +44,6 @@ func GetAllProducts(c *gin.Context) {
 	searchText := c.Query("search")
 
 	replacedText := strings.ReplaceAll(searchText, "%", " ")
-	fmt.Println(replacedText)
 
 	pageNumber, err := strconv.Atoi(pageNumberStr)
 	if err != nil || pageNumber < 1 {
