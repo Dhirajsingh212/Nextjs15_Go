@@ -11,70 +11,93 @@ import (
 )
 
 type UserInputs struct {
-	Username string `json:"username"`
 	Email    string `json:"email"`
 	Password string `json:"password"`
 }
 
-type UserLoginInputs struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
-}
+func AuthUser(c *gin.Context) {
+	var userData UserInputs
+	if err := c.BindJSON(&userData); err != nil {
+		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+			"success": false,
+			"message": "User details incomplete",
+		})
+	}
 
-func SignupUser(c *gin.Context) {
-	var userDetails UserInputs
-	if err := c.BindJSON(&userDetails); err != nil {
-		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"success": false})
+	var findDBDetails models.User
+	database.DB.Where("email = ?", userData.Email).First(&findDBDetails)
+
+	if findDBDetails.Email != "" {
+		token, id, err := SignInUser(userData)
+		if err != nil || id == 0 {
+			c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+				"success": false,
+			})
+		}
+		c.JSON(http.StatusOK, gin.H{
+			"success": true,
+			"message": "User SignedIn",
+			"id":      id,
+			"email":   userData.Email,
+			"token":   token,
+		})
+		return
+
+	} else {
+		token, id, err := SignupUser(userData)
+		if err != nil || id == 0 {
+			c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+				"success": false,
+			})
+		}
+		c.JSON(http.StatusOK, gin.H{
+			"success": true,
+			"message": "User SignedUp",
+			"id":      id,
+			"email":   userData.Email,
+			"token":   token,
+		})
 		return
 	}
 
+}
+
+func SignupUser(userDetails UserInputs) (token string, id int, err error) {
+
 	hp := utils.HashPassowrd(userDetails.Password)
-	user := models.User{Username: userDetails.Username, Email: userDetails.Email, Password: hp}
+	user := models.User{Email: userDetails.Email, Password: hp}
 	if err := database.DB.Create(&user).Error; err != nil {
-		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"success": false, "message": err.Error()})
-		return
+		return "", 0, err
 	}
 
 	var findUserDbData models.User
 
-	database.DB.Where("username = ?", user.Username).First(&findUserDbData)
+	database.DB.Where("email = ?", user.Email).First(&findUserDbData)
 
-	token := utils.GenerateToken(findUserDbData.Username, strconv.FormatUint(uint64(findUserDbData.ID), 10))
+	jwtToken := utils.GenerateToken(findUserDbData.Email, strconv.FormatUint(uint64(findUserDbData.ID), 10))
 
-	c.SetSameSite(http.SameSiteNoneMode)
-	c.SetCookie("token", token, 3600*24, "", "", true, true)
-	c.JSON(http.StatusOK, gin.H{"success": true})
+	return jwtToken, int(findUserDbData.ID), nil
 }
 
-func SignInUser(c *gin.Context) {
-	var body UserLoginInputs
-	if err := c.ShouldBindJSON(&body); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
-
+func SignInUser(body UserInputs) (token string, id int, err error) {
 	var UserDetails models.User
-	if err := database.DB.Where("username = ?", body.Username).First(&UserDetails).Error; err != nil {
-		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"success": false, "message": err.Error()})
-		return
+	if err := database.DB.Where("email = ?", body.Email).First(&UserDetails).Error; err != nil {
+		return "", 0, err
 	}
 
-	if UserDetails.Username == "" {
-		c.JSON(http.StatusBadGateway, gin.H{"success": false, "message": "User does not exits"})
-		return
+	if UserDetails.Email == "" {
+		return "", 0, err
 	}
 
 	isValidPassword := utils.VerifyPassword(UserDetails.Password, body.Password)
 
 	if !isValidPassword {
-		c.JSON(http.StatusBadRequest, gin.H{"success": false, "message": "Wrong password"})
-		return
+		return "", 0, err
 	}
 
-	token := utils.GenerateToken(UserDetails.Username, strconv.FormatUint(uint64(UserDetails.ID), 10))
-	c.SetSameSite(http.SameSiteNoneMode)
-	c.SetCookie("token", token, 3600*24, "", "", true, false)
-	c.JSON(http.StatusOK, gin.H{"success": true})
+	jwtToken := utils.GenerateToken(UserDetails.Email, strconv.FormatUint(uint64(UserDetails.ID), 10))
+
+	return jwtToken, int(UserDetails.ID), nil
 }
 
 func GetAllUser(c *gin.Context) {

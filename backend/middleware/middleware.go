@@ -10,6 +10,7 @@ import (
 
 func ProtectedCheck(c *gin.Context) {
 	cookie, err := c.Request.Cookie("token")
+
 	if err != nil {
 		c.AbortWithStatusJSON(http.StatusBadRequest, err.Error())
 		return

@@ -34,8 +34,7 @@ func main() {
 	r.GET("/health-check", greetingFunc)
 
 	// USER ROUTES
-	r.POST("/signup", controllers.SignupUser)
-	r.POST("/signin", controllers.SignInUser)
+	r.POST("/auth", controllers.AuthUser)
 	r.GET("/getAllUser", middleware.ProtectedCheck, controllers.GetAllUser)
 	r.DELETE("/delete/:id", controllers.DeleteUserById)
 	r.GET("/user/:id", middleware.ProtectedCheck, controllers.GetSingleUser)
