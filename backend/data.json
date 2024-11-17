@@ -79,6 +79,334 @@
       "price": 76,
       "category": "Electronics",
       "image": "/placeholder.svg?height=200&width=200&text=Product+10"
+    },
+    {
+      "id": 11,
+      "name": "Product11",
+      "description": "Description for product11",
+      "price": 50,
+      "category": "Books",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+11"
+    },
+    {
+      "id": 12,
+      "name": "Product12",
+      "description": "Description for product12",
+      "price": 30,
+      "category": "Electronics",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+12"
+    },
+    {
+      "id": 13,
+      "name": "Product13",
+      "description": "Description for product13",
+      "price": 20,
+      "category": "Home & Garden",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+13"
+    },
+    {
+      "id": 14,
+      "name": "Product14",
+      "description": "Description for product14",
+      "price": 75,
+      "category": "Clothing",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+14"
+    },
+    {
+      "id": 15,
+      "name": "Product15",
+      "description": "Description for product15",
+      "price": 90,
+      "category": "Books",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+15"
+    },
+    {
+      "id": 16,
+      "name": "Product16",
+      "description": "Description for product16",
+      "price": 45,
+      "category": "Electronics",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+16"
+    },
+    {
+      "id": 17,
+      "name": "Product17",
+      "description": "Description for product17",
+      "price": 60,
+      "category": "Home & Garden",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+17"
+    },
+    {
+      "id": 18,
+      "name": "Product18",
+      "description": "Description for product18",
+      "price": 25,
+      "category": "Clothing",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+18"
+    },
+    {
+      "id": 19,
+      "name": "Product19",
+      "description": "Description for product19",
+      "price": 100,
+      "category": "Books",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+19"
+    },
+    {
+      "id": 20,
+      "name": "Product20",
+      "description": "Description for product20",
+      "price": 80,
+      "category": "Electronics",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+20"
+    },
+    {
+      "id": 21,
+      "name": "Product21",
+      "description": "Description for product21",
+      "price": 55,
+      "category": "Home & Garden",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+21"
+    },
+    {
+      "id": 22,
+      "name": "Product22",
+      "description": "Description for product22",
+      "price": 70,
+      "category": "Clothing",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+22"
+    },
+    {
+      "id": 23,
+      "name": "Product23",
+      "description": "Description for product23",
+      "price": 35,
+      "category": "Books",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+23"
+    },
+    {
+      "id": 24,
+      "name": "Product24",
+      "description": "Description for product24",
+      "price": 65,
+      "category": "Electronics",
+      "image": "/placeholder.svg?height=400&width=400&text=Product+24"
+    },
+    {
+      "id": 25,
+      "name": "Product25",
+      "description": "Description of Product25",
+      "price": 55,
+      "category": "Home & Garden",
+      "image": "/placeholder.jpg"
+    },
+    {
+      "id": 26,
+      "name": "Product26",
+      "description": "Description of Product26",
+      "price": 70,
+      "category": "Clothing",
+      "image": "/placeholder.jpg"
+    },
+    {
+      "id": 27,
+      "name": "Product27",
+      "description": "Description of Product27",
+      "price": 80,
+      "category": "Books",
+      "image": "/placeholder.jpg"
+    },
+    {
+      "id": 28,
+      "name": "Product28",
+      "description": "Description of Product28",
+      "price": 90,
+      "category": "Electronics",
+      "image": "/placeholder.jpg"
+    },
+    {
+      "id": 29,
+      "name": "Product29",
+      "description": "Description of Product29",
+      "price": 100,
+      "category": "Home & Garden",
+      "image": "/placeholder.jpg"
+    },
+    {
+      "id": 30,
+      "name": "Product30",
+      "description": "Description of Product30",
+      "price": 110,
+      "category": "Clothing",
+      "image": "/placeholder.jpg"
+    },
+    {
+      "id": 31,
+      "name": "Product 31",
+      "description": "This is a description for Product 31",
+      "price": 42,
+      "category": "Books",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+31"
+    },
+    {
+      "id": 32,
+      "name": "Product 32",
+      "description": "This is a description for Product 32",
+      "price": 58,
+      "category": "Electronics",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+32"
+    },
+    {
+      "id": 33,
+      "name": "Product 33",
+      "description": "This is a description for Product 33",
+      "price": 39,
+      "category": "Home & Garden",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+33"
+    },
+    {
+      "id": 34,
+      "name": "Product 34",
+      "description": "This is a description for Product 34",
+      "price": 72,
+      "category": "Clothing",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+34"
+    },
+    {
+      "id": 35,
+      "name": "Product 35",
+      "description": "This is a description for Product 35",
+      "price": 31,
+      "category": "Books",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+35"
+    },
+    {
+      "id": 36,
+      "name": "Product 36",
+      "description": "This is a description for Product 36",
+      "price": 66,
+      "category": "Electronics",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+36"
+    },
+    {
+      "id": 37,
+      "name": "Product 37",
+      "description": "This is a description for Product 37",
+      "price": 78,
+      "category": "Home & Garden",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+37"
+    },
+    {
+      "id": 38,
+      "name": "Product 38",
+      "description": "This is a description for Product 38",
+      "price": 29,
+      "category": "Clothing",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+38"
+    },
+    {
+      "id": 39,
+      "name": "Product 39",
+      "description": "This is a description for Product 39",
+      "price": 85,
+      "category": "Books",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+39"
+    },
+    {
+      "id": 40,
+      "name": "Product 40",
+      "description": "This is a description for Product 40",
+      "price": 98,
+      "category": "Electronics",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+40"
+    },
+    {
+      "id": 41,
+      "name": "Product 41",
+      "description": "This is a description for Product 41",
+      "price": 47,
+      "category": "Home & Garden",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+41"
+    },
+    {
+      "id": 42,
+      "name": "Product 42",
+      "description": "This is a description for Product 42",
+      "price": 52,
+      "category": "Clothing",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+42"
+    },
+    {
+      "id": 43,
+      "name": "Product 43",
+      "description": "This is a description for Product 43",
+      "price": 77,
+      "category": "Books",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+43"
+    },
+    {
+      "id": 44,
+      "name": "Product 44",
+      "description": "This is a description for Product 44",
+      "price": 33,
+      "category": "Electronics",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+44"
+    },
+    {
+      "id": 45,
+      "name": "Product 45",
+      "description": "This is a description for Product 45",
+      "price": 91,
+      "category": "Home & Garden",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+45"
+    },
+    {
+      "id": 46,
+      "name": "Product 46",
+      "description": "This is a description for Product 46",
+      "price": 62,
+      "category": "Clothing",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+46"
+    },
+    {
+      "id": 47,
+      "name": "Product 47",
+      "description": "This is a description for Product 47",
+      "price": 19,
+      "category": "Books",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+47"
+    },
+    {
+      "id": 48,
+      "name": "Product 48",
+      "description": "This is a description for Product 48",
+      "price": 43,
+      "category": "Electronics",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+48"
+    },
+    {
+      "id": 49,
+      "name": "Product 49",
+      "description": "This is a description for Product 49",
+      "price": 86,
+      "category": "Home & Garden",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+49"
+    },
+    {
+      "id": 50,
+      "name": "Product 50",
+      "description": "This is a description for Product 50",
+      "price": 64,
+      "category": "Clothing",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+50"
+    },
+    {
+      "id": 51,
+      "name": "Product 51",
+      "description": "This is a description for Product 51",
+      "price": 51,
+      "category": "Books",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+51"
     }
   ]
 }

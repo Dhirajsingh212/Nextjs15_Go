@@ -10,6 +10,14 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -18,19 +26,52 @@ import {
 } from "@/components/ui/select";
 import { Filter, Search } from "lucide-react";
 import Image from "next/image";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
 
 // Client Component for interactivity
-export function ProductList({ initialData }: any) {
+export function ProductList({ initialData, totalPages }: any) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const page = Number(searchParams.get("page") || "1");
+  const perPage = 10;
+  const [searchText, setSearchText] = useState("");
+
+  const updateQueryParams = (params: Record<string, string | number>) => {
+    const current = new URLSearchParams(Array.from(searchParams.entries()));
+    Object.entries(params).forEach(([key, value]) => {
+      if (value) {
+        current.set(key, String(value));
+      } else {
+        current.delete(key);
+      }
+    });
+    const search = current.toString();
+    console.log(search);
+    const query = search ? `?${search}` : "";
+    router.push(`/home${query}`);
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">Our Products</h1>
 
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-        <form className="flex-1 flex items-center">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            router.push(`/home?search=${searchText}`);
+          }}
+          className="flex-1 flex items-center"
+        >
           <Input
             type="search"
             placeholder="Search products..."
             className="mr-2"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
           />
           <Button type="submit" variant="outline">
             <Search className="h-4 w-4 mr-2" />
@@ -83,6 +124,50 @@ export function ProductList({ initialData }: any) {
             </CardFooter>
           </Card>
         ))}
+      </div>
+
+      <div className="mt-8 flex flex-col items-center">
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious
+                href="#"
+                onClick={() =>
+                  updateQueryParams({ page: Math.max(1, page - 1) })
+                }
+                className={page <= 1 ? "pointer-events-none opacity-50" : ""}
+              />
+            </PaginationItem>
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+              (pageNum) => (
+                <PaginationItem key={pageNum}>
+                  <PaginationLink
+                    href="#"
+                    onClick={() => updateQueryParams({ page: pageNum })}
+                    isActive={pageNum === page}
+                  >
+                    {pageNum}
+                  </PaginationLink>
+                </PaginationItem>
+              )
+            )}
+            <PaginationItem>
+              <PaginationNext
+                href="#"
+                onClick={() =>
+                  updateQueryParams({ page: Math.min(totalPages, page + 1) })
+                }
+                className={
+                  page >= totalPages ? "pointer-events-none opacity-50" : ""
+                }
+              />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+        {/* <p className="text-sm text-gray-600 mt-2">
+          Showing {(page - 1) * perPage + 1} -{" "}
+          {Math.min(page * perPage, totalProducts)} of {totalProducts} products
+        </p> */}
       </div>
     </div>
   );

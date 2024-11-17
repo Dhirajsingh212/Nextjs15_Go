@@ -2,7 +2,7 @@ import { ProductList } from "@/components/Product";
 import { BACEND_URL } from "@/lib/config";
 import { cookies } from "next/headers";
 
-export async function getProducts() {
+export async function getProducts(page: number, searchText: string) {
   "use server";
   try {
     const cookieStore = await cookies();
@@ -13,22 +13,33 @@ export async function getProducts() {
       "Content-Type": "application/json",
       ...(token ? { Cookie: `token=${token.value}` } : {}),
     };
-    const response = await fetch(`${BACEND_URL}/products`, {
-      method: "GET",
-      headers,
-      credentials: "include",
-    });
+    const response = await fetch(
+      `${BACEND_URL}/products?page=${page}&search=${searchText}`,
+      {
+        method: "GET",
+        headers,
+        credentials: "include",
+      }
+    );
 
     const data = await response.json();
 
-    return data.data.products || [];
-  } catch (err) {
-    return [];
+    return data || {};
+  } catch (_) {
+    return {};
   }
 }
 
-export default async function Page() {
-  const initialData = await getProducts();
+export default async function Page({ searchParams }: any) {
+  const page = (await searchParams).page;
+  const searchText = (await searchParams).search;
 
-  return <ProductList initialData={initialData} />;
+  const initialData = await getProducts(page, searchText);
+
+  return (
+    <ProductList
+      initialData={initialData.data}
+      totalPages={initialData.totalPages}
+    />
+  );
 }
