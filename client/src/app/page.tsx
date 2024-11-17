@@ -7,24 +7,28 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { LockIcon, MailIcon } from "lucide-react";
 import { signIn, useSession } from "next-auth/react";
+import toast from "react-hot-toast";
 
 export default function Component() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const session = useSession();
-  console.log(session);
 
   const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
-      await signIn("credentials", {
+      const response = await signIn("credentials", {
         email: email,
         password: password,
+        redirect: false,
       });
-      alert("successfully created");
-      console.log("Login attempted with:", email, password);
+      if (response?.ok) {
+        toast.success("Authentication successfull.");
+      } else {
+        toast.error("Wrong credentials");
+      }
     } catch (err) {
       console.log(err);
+      toast.error("Wrong credentials");
     }
   };
 
@@ -118,17 +122,6 @@ export default function Component() {
             </Button>
           </motion.div>
         </form>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="text-center text-white text-sm"
-        >
-          Don&apos;t have an account?{" "}
-          <a href="#" className="font-bold hover:underline">
-            Sign up
-          </a>
-        </motion.p>
       </motion.div>
     </div>
   );

@@ -37,6 +37,7 @@ func main() {
 	r.POST("/auth", controllers.AuthUser)
 	r.GET("/getAllUser", middleware.ProtectedCheck, controllers.GetAllUser)
 	r.DELETE("/delete/:id", controllers.DeleteUserById)
+	r.GET("/products", middleware.ProtectedCheck, controllers.GetAllProducts)
 	r.GET("/user/:id", middleware.ProtectedCheck, controllers.GetSingleUser)
 	r.Run("localhost:8080")
 }

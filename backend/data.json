@@ -1,0 +1,84 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Product 1",
+      "description": "This is a description for Product 1",
+      "price": 65,
+      "category": "Books",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+1"
+    },
+    {
+      "id": 2,
+      "name": "Product 2",
+      "description": "This is a description for Product 2",
+      "price": 23,
+      "category": "Electronics",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+2"
+    },
+    {
+      "id": 3,
+      "name": "Product 3",
+      "description": "This is a description for Product 3",
+      "price": 87,
+      "category": "Home & Garden",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+3"
+    },
+    {
+      "id": 4,
+      "name": "Product 4",
+      "description": "This is a description for Product 4",
+      "price": 54,
+      "category": "Clothing",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+4"
+    },
+    {
+      "id": 5,
+      "name": "Product 5",
+      "description": "This is a description for Product 5",
+      "price": 12,
+      "category": "Books",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+5"
+    },
+    {
+      "id": 6,
+      "name": "Product 6",
+      "description": "This is a description for Product 6",
+      "price": 99,
+      "category": "Electronics",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+6"
+    },
+    {
+      "id": 7,
+      "name": "Product 7",
+      "description": "This is a description for Product 7",
+      "price": 34,
+      "category": "Home & Garden",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+7"
+    },
+    {
+      "id": 8,
+      "name": "Product 8",
+      "description": "This is a description for Product 8",
+      "price": 45,
+      "category": "Clothing",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+8"
+    },
+    {
+      "id": 9,
+      "name": "Product 9",
+      "description": "This is a description for Product 9",
+      "price": 27,
+      "category": "Books",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+9"
+    },
+    {
+      "id": 10,
+      "name": "Product 10",
+      "description": "This is a description for Product 10",
+      "price": 76,
+      "category": "Electronics",
+      "image": "/placeholder.svg?height=200&width=200&text=Product+10"
+    }
+  ]
+}
