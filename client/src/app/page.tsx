@@ -6,12 +6,14 @@ import { Label } from "@/components/ui/label";
 import { motion } from "framer-motion";
 import { LockIcon, MailIcon } from "lucide-react";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
 export default function Component() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,6 +25,9 @@ export default function Component() {
       });
       if (response?.ok) {
         toast.success("Authentication successfull.");
+        setEmail("");
+        setPassword("");
+        router.push("/home");
       } else {
         toast.error("Wrong credentials");
       }
