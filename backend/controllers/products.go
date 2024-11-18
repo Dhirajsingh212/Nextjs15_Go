@@ -40,8 +40,9 @@ func GetAllProducts(c *gin.Context) {
 
 	json.Unmarshal(byteValue, &products)
 
-	pageNumberStr := c.Query("page")
-	searchText := c.Query("search")
+	pageNumberStr := c.DefaultQuery("page", "1")
+	searchText := c.DefaultQuery("search", "")
+	filterText := c.DefaultQuery("category", "")
 
 	replacedText := strings.ReplaceAll(searchText, "%", " ")
 
@@ -63,7 +64,7 @@ func GetAllProducts(c *gin.Context) {
 	var filteredData []Product
 
 	for i := 0; i < len(products.Products); i++ {
-		if strings.Contains(strings.ToLower(products.Products[i].Name), strings.ToLower(replacedText)) {
+		if strings.Contains(strings.ToLower(products.Products[i].Name), strings.ToLower(replacedText)) && strings.Contains(strings.ToLower(products.Products[i].Category), strings.ToLower(filterText)) {
 			filteredData = append(filteredData, products.Products[i])
 		}
 	}
