@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres
+    container_name: db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data3
+
+  backend:
+    build:
+      dockerfile: Dockerfile
+      context: ./
+    container_name: my-golang-air
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/app
+      - tmp:/app/tmp
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
+  tmp:

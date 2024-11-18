@@ -39,7 +39,7 @@ func main() {
 	r.DELETE("/delete/:id", controllers.DeleteUserById)
 	r.GET("/products", middleware.ProtectedCheck, controllers.GetAllProducts)
 	r.GET("/user/:id", middleware.ProtectedCheck, controllers.GetSingleUser)
-	r.Run("localhost:8080")
+	r.Run()
 }
 
 func greetingFunc(c *gin.Context) {
