@@ -1,5 +1,6 @@
 "use client";
 
+import Spinner from "@/components/Spinner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -13,11 +14,13 @@ import toast from "react-hot-toast";
 export default function Component() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       const response = await signIn("credentials", {
         email: email,
         password: password,
@@ -34,6 +37,8 @@ export default function Component() {
     } catch (err) {
       console.log(err);
       toast.error("Wrong credentials");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -121,9 +126,10 @@ export default function Component() {
           >
             <Button
               type="submit"
+              disabled={isLoading}
               className="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             >
-              Sign In
+              {isLoading ? <Spinner /> : "Sign In"}
             </Button>
           </motion.div>
         </form>

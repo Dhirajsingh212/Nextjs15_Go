@@ -39,6 +39,7 @@ func main() {
 	r.DELETE("/delete/:id", controllers.DeleteUserById)
 	r.GET("/products", middleware.ProtectedCheck, controllers.GetAllProducts)
 	r.GET("/user/:id", middleware.ProtectedCheck, controllers.GetSingleUser)
+
 	r.Run()
 }
 

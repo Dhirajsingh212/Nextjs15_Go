@@ -12,6 +12,13 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data3
 
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
+
   backend:
     build:
       dockerfile: Dockerfile
@@ -24,6 +31,7 @@ services:
       - tmp:/app/tmp
     depends_on:
       - postgres
+      - redis
 
 volumes:
   postgres_data:
