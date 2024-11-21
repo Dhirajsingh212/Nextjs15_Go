@@ -114,7 +114,10 @@ export function ProductList({
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8">Our Products</h1>
+      <div className="flex flex-row justify-between">
+        <h1 className="text-3xl font-bold mb-8">Our Products</h1>
+        <Button>Signout</Button>
+      </div>
 
       {/* Search and Filter Section */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">

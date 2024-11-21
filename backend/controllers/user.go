@@ -132,3 +132,9 @@ func GetSingleUser(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, gin.H{"success": true, "data": user})
 }
+
+func VerifyToken(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{
+		"success": true,
+	})
+}
