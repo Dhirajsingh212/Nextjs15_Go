@@ -24,3 +24,4 @@ This project demonstrates a simple authentication system using email and passwor
 - **Database**: Postgres
 - **Authentication**: JWT for secure communication between frontend and backend.
 
+
