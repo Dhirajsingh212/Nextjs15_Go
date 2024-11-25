@@ -23,5 +23,3 @@ This project demonstrates a simple authentication system using email and passwor
 - **Frontend**: Next.js with NextAuth for authentication management.
 - **Database**: Postgres
 - **Authentication**: JWT for secure communication between frontend and backend.
-
-
